@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import Shop from "../components/Shop/Shop";
 
 describe("App component", () => {
-  it("renders correct heading for home", () => {
+  it("renders correct heading for store", () => {
     render(<Shop />);
     expect(screen.getByRole("heading").textContent).toMatch(/store/i);
   });
