@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./ShopItem.module.css";
 
-function ShopItem({ itemId }) {
+function ShopItem({ itemId, totalItems, setTotalItems }) {
   const [itemData, setItemData] = useState({});
   const [count, setCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -66,13 +66,22 @@ function ShopItem({ itemId }) {
         </button>
       </div>
 
-      <button type="button">Add to Cart</button>
+      <button
+        type="button"
+        onClick={() => {
+          setTotalItems(totalItems + count);
+        }}
+      >
+        Add to Cart
+      </button>
     </div>
   );
 }
 
 ShopItem.propTypes = {
   itemId: PropTypes.number,
+  totalItems: PropTypes.number,
+  setTotalItems: PropTypes.func,
 };
 
 export default ShopItem;

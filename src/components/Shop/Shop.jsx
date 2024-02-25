@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 import ShopItem from "../ShopItem/ShopItem.jsx";
 import styles from "./Shop.module.css";
 
-function Shop() {
+function Shop({ totalItems, setTotalItems }) {
   const [itemIds, setItemIds] = useState([]);
 
   useEffect(() => {
@@ -30,7 +31,14 @@ function Shop() {
     };
   }, []);
 
-  const shopItems = itemIds.map((id) => <ShopItem key={id} itemId={id} />);
+  const shopItems = itemIds.map((id) => (
+    <ShopItem
+      key={id}
+      itemId={id}
+      totalItems={totalItems}
+      setTotalItems={setTotalItems}
+    />
+  ));
 
   return (
     <main>
@@ -40,5 +48,10 @@ function Shop() {
     </main>
   );
 }
+
+Shop.propTypes = {
+  totalItems: PropTypes.number,
+  setTotalItems: PropTypes.func,
+};
 
 export default Shop;
