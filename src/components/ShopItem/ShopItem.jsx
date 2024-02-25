@@ -9,26 +9,34 @@ function ShopItem({ itemId }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function getImageUrl() {
-      try {
-        const response = await fetch(
-          "https://fakestoreapi.com/products/" + itemId
-        );
-        const data = await response.json();
-        const relevantData = {
-          description: data.description,
-          image: data.image,
-          price: data.price,
-          title: data.title,
-        };
-        setItemData(relevantData);
-      } catch (error) {
-        console.error("Issue fetching data: " + error);
-      } finally {
-        setLoading(false);
+    let ignore = false;
+
+    async function getItemData() {
+      if (!ignore) {
+        try {
+          const response = await fetch(
+            "https://fakestoreapi.com/products/" + itemId
+          );
+          const data = await response.json();
+          const relevantData = {
+            description: data.description,
+            image: data.image,
+            price: data.price,
+            title: data.title,
+          };
+          setItemData(relevantData);
+        } catch (error) {
+          console.error("Issue fetching data: " + error);
+        } finally {
+          setLoading(false);
+        }
       }
     }
-    getImageUrl();
+    getItemData();
+
+    return () => {
+      ignore = true;
+    };
   }, [itemId]);
 
   if (loading) {
