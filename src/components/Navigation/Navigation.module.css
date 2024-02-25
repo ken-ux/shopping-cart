@@ -8,3 +8,13 @@
   gap: 1rem;
   position: fixed;
 }
+
+.nav > * {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.1s linear;
+}
+
+.nav > *:hover {
+  opacity: 50%;
+}
