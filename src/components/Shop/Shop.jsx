@@ -42,10 +42,6 @@ function Shop({ totalItems, setTotalItems }) {
     };
   }, []);
 
-  if (loading) {
-    shopItems = <h2>Loading products...</h2>;
-  }
-
   let shopItems = itemsData.map((item) => (
     <ShopItem
       key={item.id}
@@ -54,6 +50,10 @@ function Shop({ totalItems, setTotalItems }) {
       setTotalItems={setTotalItems}
     />
   ));
+
+  if (loading) {
+    shopItems = <h2>Loading products...</h2>;
+  }
 
   return (
     <main>
