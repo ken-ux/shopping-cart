@@ -5,9 +5,9 @@ import styles from "./Navigation.module.css";
 function Navigation({ totalItems }) {
   let totalCount = 0;
   const keys = Object.keys(totalItems);
-  for (let i = 0; i < keys.length; i++) {
-    totalCount += totalItems[keys[i]];
-  }
+  keys.map((key) => {
+    totalCount += totalItems[key];
+  });
 
   return (
     <div className={styles.navWrapper}>
