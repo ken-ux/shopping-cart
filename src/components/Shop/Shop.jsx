@@ -65,7 +65,7 @@ function Shop({ totalItems, setTotalItems }) {
 }
 
 Shop.propTypes = {
-  totalItems: PropTypes.number,
+  totalItems: PropTypes.object,
   setTotalItems: PropTypes.func,
 };
 

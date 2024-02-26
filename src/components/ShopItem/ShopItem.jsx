@@ -5,6 +5,16 @@ import styles from "./ShopItem.module.css";
 function ShopItem({ itemData, totalItems, setTotalItems }) {
   const [count, setCount] = useState(0);
 
+  function handleClick() {
+    let newTotalItems = { ...totalItems };
+    if (!newTotalItems[itemData.id]) {
+      newTotalItems[itemData.id] = count;
+    } else {
+      newTotalItems[itemData.id] = newTotalItems[itemData.id] + count;
+    }
+    setTotalItems(newTotalItems);
+  }
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>{itemData.title}</h2>
@@ -28,12 +38,7 @@ function ShopItem({ itemData, totalItems, setTotalItems }) {
         </button>
       </div>
 
-      <button
-        type="button"
-        onClick={() => {
-          setTotalItems(totalItems + count);
-        }}
-      >
+      <button type="button" onClick={handleClick}>
         Add to Cart
       </button>
     </div>
@@ -42,7 +47,7 @@ function ShopItem({ itemData, totalItems, setTotalItems }) {
 
 ShopItem.propTypes = {
   itemData: PropTypes.object,
-  totalItems: PropTypes.number,
+  totalItems: PropTypes.object,
   setTotalItems: PropTypes.func,
 };
 

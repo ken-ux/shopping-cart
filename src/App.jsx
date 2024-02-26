@@ -8,7 +8,7 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart.jsx";
 
 function App() {
   const { name } = useParams();
-  const [totalItems, setTotalItems] = useState(0);
+  const [totalItems, setTotalItems] = useState({});
 
   return (
     <>
