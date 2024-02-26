@@ -5,7 +5,8 @@ import ShopItem from "../ShopItem/ShopItem.jsx";
 import styles from "./Shop.module.css";
 
 function Shop({ totalItems, setTotalItems }) {
-  const [itemIds, setItemIds] = useState([]);
+  const [itemsData, setItemsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let ignore = false;
@@ -17,10 +18,20 @@ function Shop({ totalItems, setTotalItems }) {
             "https://fakestoreapi.com/products/category/electronics"
           );
           const data = await response.json();
-          const extractedItemIds = data.map((item) => item.id);
-          setItemIds(extractedItemIds);
+          const extractedItems = data.map((item) => {
+            return {
+              id: item.id,
+              description: item.description,
+              image: item.image,
+              price: item.price,
+              title: item.title,
+            };
+          });
+          setItemsData(extractedItems);
         } catch (error) {
           console.error("Issue fetching data: ", error);
+        } finally {
+          setLoading(false);
         }
       }
     }
@@ -31,10 +42,14 @@ function Shop({ totalItems, setTotalItems }) {
     };
   }, []);
 
-  const shopItems = itemIds.map((id) => (
+  if (loading) {
+    shopItems = <h2>Loading products...</h2>;
+  }
+
+  let shopItems = itemsData.map((item) => (
     <ShopItem
-      key={id}
-      itemId={id}
+      key={item.id}
+      itemData={item}
       totalItems={totalItems}
       setTotalItems={setTotalItems}
     />

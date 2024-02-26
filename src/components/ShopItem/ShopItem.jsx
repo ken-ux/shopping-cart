@@ -1,47 +1,9 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./ShopItem.module.css";
 
-function ShopItem({ itemId, totalItems, setTotalItems }) {
-  const [itemData, setItemData] = useState({});
+function ShopItem({ itemData, totalItems, setTotalItems }) {
   const [count, setCount] = useState(0);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let ignore = false;
-
-    async function getItemData() {
-      if (!ignore) {
-        try {
-          const response = await fetch(
-            "https://fakestoreapi.com/products/" + itemId
-          );
-          const data = await response.json();
-          const relevantData = {
-            description: data.description,
-            image: data.image,
-            price: data.price,
-            title: data.title,
-          };
-          setItemData(relevantData);
-        } catch (error) {
-          console.error("Issue fetching data: " + error);
-        } finally {
-          setLoading(false);
-        }
-      }
-    }
-    getItemData();
-
-    return () => {
-      ignore = true;
-    };
-  }, [itemId]);
-
-  if (loading) {
-    return <h2>Loading product...</h2>;
-  }
 
   return (
     <div className={styles.container}>
@@ -79,7 +41,7 @@ function ShopItem({ itemId, totalItems, setTotalItems }) {
 }
 
 ShopItem.propTypes = {
-  itemId: PropTypes.number,
+  itemData: PropTypes.object,
   totalItems: PropTypes.number,
   setTotalItems: PropTypes.func,
 };
