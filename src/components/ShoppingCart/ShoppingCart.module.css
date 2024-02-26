@@ -1,0 +1,17 @@
+.item {
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  object-fit: scale-down;
+}
+
+.title {
+  font-weight: 800;
+  margin-top: 0;
+}
