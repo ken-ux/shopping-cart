@@ -3,10 +3,16 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styles from "./ShoppingCart.module.css";
 
-function ShoppingCart({ totalItems }) {
+function ShoppingCart({ totalItems, setTotalItems }) {
   const [itemsData, setItemsData] = useState({});
   const [loading, setLoading] = useState(true);
   const keys = Object.keys(totalItems);
+
+  function handleRemoveItem(id) {
+    let newTotalItems = { ...totalItems };
+    delete newTotalItems[id];
+    setTotalItems(newTotalItems);
+  }
 
   useEffect(() => {
     let ignore = false;
@@ -65,7 +71,9 @@ function ShoppingCart({ totalItems }) {
               <p>
                 Price: ${itemsData[key].price} x {totalItems[key]}
               </p>
-              <button type="button">Remove from Cart</button>
+              <button type="button" onClick={() => handleRemoveItem(key)}>
+                Remove from Cart
+              </button>
             </div>
           </div>
         );
@@ -78,13 +86,22 @@ function ShoppingCart({ totalItems }) {
       <h1>Shopping Cart</h1>
       {items}
       <p>Total: ${total}</p>
-      <button type="button">Submit Order</button>
+      <button
+        type="button"
+        onClick={() => {
+          alert("Order submitted!");
+          setTotalItems({});
+        }}
+      >
+        Submit Order
+      </button>
     </main>
   );
 }
 
 ShoppingCart.propTypes = {
   totalItems: PropTypes.object,
+  setTotalItems: PropTypes.func,
 };
 
 export default ShoppingCart;

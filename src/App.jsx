@@ -16,7 +16,7 @@ function App() {
       {name === "shop" ? (
         <Shop totalItems={totalItems} setTotalItems={setTotalItems} />
       ) : name === "shopping-cart" ? (
-        <ShoppingCart totalItems={totalItems} />
+        <ShoppingCart totalItems={totalItems} setTotalItems={setTotalItems} />
       ) : (
         <Home />
       )}
