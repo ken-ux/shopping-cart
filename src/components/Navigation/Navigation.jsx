@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import cart from "../../assets/cart-variant.svg";
 import styles from "./Navigation.module.css";
 
 function Navigation({ totalItems }) {
@@ -15,7 +16,7 @@ function Navigation({ totalItems }) {
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
         <Link className={styles.shoppingCart} to="/shopping-cart">
-          Shopping Cart ({totalCount})
+          <img className={styles.image} src={cart} alt="Shopping Cart" /> ({totalCount})
         </Link>
       </nav>
     </div>

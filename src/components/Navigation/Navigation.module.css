@@ -1,12 +1,16 @@
 .navWrapper {
-  background-color: lightblue;
+  background-color: black;
+  opacity: 80%;
 }
 
 .nav {
+  color: white;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   position: fixed;
+  font-weight: 600;
+  font-size: 1.25rem;
 }
 
 .nav > * {
@@ -17,4 +21,15 @@
 
 .nav > *:hover {
   opacity: 50%;
+}
+
+.image {
+  width: 30px;
+  filter: invert();
+}
+
+.shoppingCart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
