@@ -15,18 +15,62 @@
 }
 
 .container {
-  border: 1px solid red;
   padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px rgb(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: box-shadow 0.1s linear;
+}
+
+.container:hover {
+  box-shadow: 0 0 8px rgb(0, 0, 0, 0.5);
 }
 
 .image {
   height: 200px;
   width: 100%;
   object-fit: contain;
+  padding: 1rem 0;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .itemCounter {
   display: flex;
   align-items: center;
+  width: 70px;
+  justify-content: space-between;
   gap: 10px;
+}
+
+.itemCounter button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.price {
+  margin-bottom: 0;
+}
+
+.expandButton {
+  color: inherit;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.expandButton:hover {
+  cursor: pointer;
 }

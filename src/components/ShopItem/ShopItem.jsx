@@ -37,30 +37,35 @@ function ShopItem({ itemData, totalItems, setTotalItems }) {
       >
         {itemData.description}
       </p>
-      <button type="button" onClick={() => setDescExpanded(!descExpanded)}>
+      <button
+        className={styles.expandButton}
+        type="button"
+        onClick={() => setDescExpanded(!descExpanded)}
+      >
         {descExpanded ? "See less" : "See more"}
       </button>
-      <p>${itemData.price}</p>
-      <div className={styles.itemCounter}>
-        <button
-          type="button"
-          onClick={() => {
-            if (count > 0) {
-              setCount(count - 1);
-            }
-          }}
-        >
-          -
-        </button>
-        <p>{count}</p>
-        <button type="button" onClick={() => setCount(count + 1)}>
-          +
+      <div className={styles.itemDetails}>
+        <p className={styles.price}>${itemData.price}</p>
+        <div className={styles.itemCounter}>
+          <button
+            type="button"
+            onClick={() => {
+              if (count > 0) {
+                setCount(count - 1);
+              }
+            }}
+          >
+            −
+          </button>
+          <p>{count}</p>
+          <button type="button" onClick={() => setCount(count + 1)}>
+            +
+          </button>
+        </div>
+        <button type="button" onClick={handleClick}>
+          Add to Cart
         </button>
       </div>
-
-      <button type="button" onClick={handleClick}>
-        Add to Cart
-      </button>
     </div>
   );
 }
