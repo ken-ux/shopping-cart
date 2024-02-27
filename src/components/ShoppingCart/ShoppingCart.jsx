@@ -58,7 +58,7 @@ function ShoppingCart({ totalItems, setTotalItems }) {
 
   if (!loading) {
     if (keys.length === 0) {
-      items = "No items in cart.";
+      items = "No items in your cart.";
     } else {
       items = keys.map((key) => {
         total += itemsData[key].price * totalItems[key];
@@ -84,7 +84,7 @@ function ShoppingCart({ totalItems, setTotalItems }) {
   return (
     <main>
       <h1>Shopping Cart</h1>
-      {items}
+      <div className={styles.container}>{items}</div>
       <p>Total: ${total}</p>
       <button
         type="button"
