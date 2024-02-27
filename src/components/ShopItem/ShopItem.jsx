@@ -4,6 +4,8 @@ import styles from "./ShopItem.module.css";
 
 function ShopItem({ itemData, totalItems, setTotalItems }) {
   const [count, setCount] = useState(0);
+  const [titleExpanded, setTitleExpanded] = useState(false);
+  const [descExpanded, setDescExpanded] = useState(false);
 
   function handleClick() {
     let newTotalItems = { ...totalItems };
@@ -17,9 +19,27 @@ function ShopItem({ itemData, totalItems, setTotalItems }) {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>{itemData.title}</h2>
+      <h2
+        className={
+          titleExpanded ? `${styles.title} ${styles.expanded}` : styles.title
+        }
+        onClick={() => setTitleExpanded(!titleExpanded)}
+      >
+        {itemData.title}
+      </h2>
       <img className={styles.image} src={itemData.image} alt="" />
-      <p>{itemData.description}</p>
+      <p
+        className={
+          descExpanded
+            ? `${styles.description} ${styles.expanded}`
+            : styles.description
+        }
+      >
+        {itemData.description}
+      </p>
+      <button type="button" onClick={() => setDescExpanded(!descExpanded)}>
+        {descExpanded ? "See less" : "See more"}
+      </button>
       <p>${itemData.price}</p>
       <div className={styles.itemCounter}>
         <button
