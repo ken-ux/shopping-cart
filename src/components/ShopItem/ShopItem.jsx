@@ -15,6 +15,8 @@ function ShopItem({ itemData, totalItems, setTotalItems }) {
       newTotalItems[itemData.id] = newTotalItems[itemData.id] + count;
     }
     setTotalItems(newTotalItems);
+    setCount(0);
+    alert("Items added to cart!");
   }
 
   return (
