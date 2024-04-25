@@ -2,7 +2,7 @@
 
 This is a SPA for a mock shop built with React. The main goals of this project were to try simple unit testing in a React environment, fetching data and error-handling requests, and practicing routing with React Router.
 
-Live version of this project can be found here: [ken-ux.github.io/shopping-cart/](ken-ux.github.io/shopping-cart/)
+Live version of this project can be found here: [https://ken-ux.github.io/shopping-cart/](https://ken-ux.github.io/shopping-cart/)
 
 ## Lessons Learned
 
